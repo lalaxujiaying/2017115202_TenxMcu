@@ -37,12 +37,14 @@ void TimeProcess() {
     timer5ms = 0;
     
     GetKeys();
+    GetTemp();
   }
   if (second >= D_1000ms) {
     // 1s 执行一次
     second = 0;
     //CLRWDT = 1; To:清除看门狗定时器
   }
+   
   
 
 }
@@ -115,8 +117,8 @@ void DisplayProcess() {
     
     F_led1Off();
     F_led2On();
-    gewei = index % 10;
-    ten = (index-gewei)/10;
+    gewei = curTemp % 10;
+    ten = (curTemp-gewei)/10;
     smg_control(gewei,2);
     smg_control(ten,1);
 
@@ -125,8 +127,8 @@ void DisplayProcess() {
   else {
      F_led1On();
     F_led2Off();
-    gewei = index%10;
-    ten = (index-gewei)/10;
+    gewei = curTemp%10;
+    ten = (curTemp-gewei)/10;
     smg_control(gewei,2);
     smg_control(ten,1);
   }
